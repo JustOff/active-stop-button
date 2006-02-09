@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+
+		<em:id>{9e96e0c4-9bde-49b7-989f-a4ca4bdc90bb}</em:id>
+		<em:name>Active Stop Button</em:name>
+		<em:version>0.2</em:version>
+		<em:description>Always active toolbar stop button.</em:description>
+		<em:creator>Off Just Off</em:creator>
+		<em:homepageURL>mailto://Off.Just.Off@gmail.com</em:homepageURL>
+		<em:iconURL>chrome://astob/skin/logo.png</em:iconURL>
+		<em:file>
+			<Description about="urn:mozilla:extension:file:astob.jar">
+				<em:package>content/astob/</em:package>
+				<em:skin>skin/classic/astob/</em:skin>
+			</Description>
+		</em:file>
+
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>1.5</em:minVersion>
+				<em:maxVersion>1.6</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+	</Description>
+</RDF>

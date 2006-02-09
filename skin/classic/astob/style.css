@@ -1,0 +1,17 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#astob-button {
+	-moz-image-region: rect(0px 72px 24px 48px);
+}
+
+#astob-button:hover {
+	-moz-image-region: rect(24px 72px 48px 48px);
+}
+
+toolbar[iconsize="small"] #astob-button {
+	-moz-image-region: rect(0px 48px 16px 32px);
+}
+
+toolbar[iconsize="small"] #astob-button:hover {
+	-moz-image-region: rect(16px 48px 32px 32px);
+}

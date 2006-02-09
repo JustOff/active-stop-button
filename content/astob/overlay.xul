@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://astob/skin/style.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd"> %browserDTD;
+<!ENTITY % globalRegionDTD SYSTEM "chrome://global-region/locale/region.dtd"> %globalRegionDTD; ]>
+
+<overlay id="astobOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script>
+function stopAllTabs() {
+	var tab, browser, l, i;
+	stop(); 
+	if (getBrowser().mTabContainer.childNodes.length &gt; 1) {
+		l = getBrowser().mTabContainer.childNodes.length;
+		for (i = 0; i &lt; l; i++) {
+			tab = getBrowser().mTabContainer.childNodes[i];
+			browser = getBrowser().getBrowserForTab(tab);
+			browser.stop();
+		}
+	}
+}
+
+function clickButton(e) {
+	if (e.button == 0) BrowserStop();
+	if (e.button == 2) stopAllTabs();
+	e.preventDefault();
+}
+
+
+</script>
+
+<toolbarpalette id="BrowserToolbarPalette">
+	<toolbarbutton id="astob-button"
+		class="toolbarbutton-1"
+		onclick="clickButton(event);"
+		label="&stopCmd.label;"
+		tooltiptext="&stopButton.tooltip;"
+	/>
+</toolbarpalette>
+
+</overlay>
