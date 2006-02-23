@@ -21,22 +21,43 @@ function stopAllTabs() {
 	}
 }
 
-function clickButton(e) {
+function ASBclick(e) {
 	if (e.button == 0) BrowserStop();
 	if (e.button == 2) stopAllTabs();
 	e.preventDefault();
 }
 
+window.addEventListener('load', function(e) {
+
+	var stopButton;
+	stopButton = document.getElementById('stop-button');
+	stopButton.addEventListener('DOMAttrModified', enableStop, false);
+
+	function enableStop(e) {
+		if (e.attrName == 'disabled') {
+			stopButton.setAttribute('disabled', 'false');
+		}
+	}
+
+	var _BrowserCustomizeToolbar = BrowserCustomizeToolbar;
+	BrowserCustomizeToolbar = function BrowserCustomizeToolbar() {
+		stopButton.removeEventListener('DOMAttrModified', enableStop, false);
+		_BrowserCustomizeToolbar();
+	}
+
+	var _BrowserToolboxCustomizeDone = BrowserToolboxCustomizeDone;
+	BrowserToolboxCustomizeDone = function BrowserToolboxCustomizeDone(aToolboxChanged) {
+		_BrowserToolboxCustomizeDone(aToolboxChanged);
+		stopButton = document.getElementById('stop-button');
+		stopButton.addEventListener('DOMAttrModified', enableStop, false);
+		stopButton.setAttribute('disabled', 'false');
+	}
+
+}, false);
+
 
 </script>
 
-<toolbarpalette id="BrowserToolbarPalette">
-	<toolbarbutton id="astob-button"
-		class="toolbarbutton-1"
-		onclick="clickButton(event);"
-		label="&stopCmd.label;"
-		tooltiptext="&stopButton.tooltip;"
-	/>
-</toolbarpalette>
+<toolbarbutton id="stop-button"	onclick="ASBclick(event);" />
 
 </overlay>

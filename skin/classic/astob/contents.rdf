@@ -18,8 +18,4 @@
     <RDF:li resource="chrome://global/content/customizeToolbar.xul"/>
   </RDF:Seq>
 
-  <RDF:Seq about="chrome://global/content/customizeToolbar.xul">
-    <RDF:li>chrome://astob/skin/style.css</RDF:li>
-  </RDF:Seq> 
-
 </RDF:RDF>
