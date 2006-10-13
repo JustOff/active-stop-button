@@ -27,17 +27,23 @@ function ASBclick(e) {
 	e.preventDefault();
 }
 
-window.addEventListener('load', function(e) {
+function enableStop(e) {
+	if (e.attrName == 'disabled') {
+		stopButton = document.getElementById('stop-button');
+		stopButton.setAttribute('disabled', 'false');
+	}
+}
 
-	var stopButton;
+function ASB_BrowserToolboxCustomizeDone(aToolboxChanged) {
 	stopButton = document.getElementById('stop-button');
 	stopButton.addEventListener('DOMAttrModified', enableStop, false);
+	stopButton.setAttribute('disabled', 'false');
+}
 
-	function enableStop(e) {
-		if (e.attrName == 'disabled') {
-			stopButton.setAttribute('disabled', 'false');
-		}
-	}
+window.addEventListener('load', function(e) {
+
+	stopButton = document.getElementById('stop-button');
+	stopButton.addEventListener('DOMAttrModified', enableStop, false);
 
 	var _BrowserCustomizeToolbar = BrowserCustomizeToolbar;
 	BrowserCustomizeToolbar = function BrowserCustomizeToolbar() {
@@ -45,13 +51,8 @@ window.addEventListener('load', function(e) {
 		_BrowserCustomizeToolbar();
 	}
 
-	var _BrowserToolboxCustomizeDone = BrowserToolboxCustomizeDone;
-	BrowserToolboxCustomizeDone = function BrowserToolboxCustomizeDone(aToolboxChanged) {
-		_BrowserToolboxCustomizeDone(aToolboxChanged);
-		stopButton = document.getElementById('stop-button');
-		stopButton.addEventListener('DOMAttrModified', enableStop, false);
-		stopButton.setAttribute('disabled', 'false');
-	}
+eval("BrowserToolboxCustomizeDone ="+BrowserToolboxCustomizeDone.toString().replace(
+/{/,"{"+"ASB_BrowserToolboxCustomizeDone();"));
 
 }, false);
 
