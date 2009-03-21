@@ -16,7 +16,7 @@ xmlns:chrome="http://www.mozilla.org/rdf/chrome#">
 	</RDF:Seq>
 
 	<RDF:Description RDF:about="urn:mozilla:package:astob"
-		chrome:displayName="Active Stop Button 1.2"
+		chrome:displayName="Active Stop Button 1.2.1"
 		chrome:author="Off Just Off"
 		chrome:authorURL="mailto:Off.Just.Off@gmail.com"
 		chrome:name="astob"
