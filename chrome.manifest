@@ -1,0 +1,3 @@
+overlay	chrome://browser/content/browser.xul	chrome://astob/content/overlay.xul
+content	astob	jar:chrome/astob.jar!/content/astob/
+skin	astob	classic/1.0	jar:chrome/astob.jar!/skin/classic/astob/
