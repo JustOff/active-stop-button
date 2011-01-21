@@ -1,11 +1,9 @@
-<?xml version="1.0"?>
-<?xml-stylesheet href="chrome://astob/skin/style.css" type="text/css"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://browser/content/browser.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://astob/content/astob.css"?>
 
-<!DOCTYPE overlay [
-<!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd"> %browserDTD;
-<!ENTITY % globalRegionDTD SYSTEM "chrome://global-region/locale/region.dtd"> %globalRegionDTD; ]>
-
-<overlay id="astobOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="astob-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 <script>
 function stopAllTabs() {
@@ -55,10 +53,9 @@ eval("BrowserToolboxCustomizeDone ="+BrowserToolboxCustomizeDone.toString().repl
 /{/,"{"+"ASB_BrowserToolboxCustomizeDone();"));
 
 }, false);
-
-
 </script>
 
 <toolbarbutton id="stop-button"	onclick="ASBclick(event);" />
+<toolbarbutton id="urlbar-stop-button"	onclick="ASBclick(event);" />
 
 </overlay>
