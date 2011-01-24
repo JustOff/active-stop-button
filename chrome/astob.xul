@@ -32,14 +32,28 @@ function enableStop(e) {
 	}
 }
 
-function ASB_BrowserToolboxCustomizeDone(aToolboxChanged) {
-	stopButton = document.getElementById('stop-button');
-	stopButton.addEventListener('DOMAttrModified', enableStop, false);
-	stopButton.setAttribute('disabled', 'false');
+function enableStopM(e) {
+	if (e.attrName == 'disabled') {
+		stopMenu = document.getElementById('context-stop');
+		stopMenu.setAttribute('disabled', 'false');
+	}
+}
+
+function ASBdelayedStartup() {
+	var ntoolbox = document.getElementById('navigator-toolbox');
+	ASBToolboxCustomizeDone = ntoolbox.customizeDone;
+	ntoolbox.customizeDone = function ASBcustomizeDone(aToolboxChanged) {
+		ASBToolboxCustomizeDone(aToolboxChanged);
+	        stopButton = document.getElementById('stop-button');
+		stopButton.addEventListener('DOMAttrModified', enableStop, false);
+		stopButton.setAttribute('disabled', 'false');
+	};
+	stopMenu = document.getElementById('context-stop');
+	stopMenu.addEventListener('DOMAttrModified', enableStopM, false);
+	stopMenu.setAttribute('disabled', 'false');
 }
 
 window.addEventListener('load', function(e) {
-
 	stopButton = document.getElementById('stop-button');
 	stopButton.addEventListener('DOMAttrModified', enableStop, false);
 
@@ -48,14 +62,11 @@ window.addEventListener('load', function(e) {
 		stopButton.removeEventListener('DOMAttrModified', enableStop, false);
 		_BrowserCustomizeToolbar();
 	}
-
-eval("BrowserToolboxCustomizeDone ="+BrowserToolboxCustomizeDone.toString().replace(
-/{/,"{"+"ASB_BrowserToolboxCustomizeDone();"));
-
+	window.setTimeout(ASBdelayedStartup, 0);
 }, false);
 </script>
 
-<toolbarbutton id="stop-button"	onclick="ASBclick(event);" />
-<toolbarbutton id="urlbar-stop-button"	onclick="ASBclick(event);" />
+<toolbarbutton id="stop-button" onclick="ASBclick(event);" />
+<toolbarbutton id="urlbar-stop-button" onclick="ASBclick(event);" />
 
 </overlay>
