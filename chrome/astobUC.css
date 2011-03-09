@@ -1,0 +1,8 @@
+#reload-button:not([displaystop]) + #stop-button,
+#reload-button[displaystop]
+{
+  visibility: visible !important;
+}
+#asb-zero {
+ visibility: collapse !important;
+}

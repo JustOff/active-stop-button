@@ -1,0 +1,8 @@
+#urlbar-reload-button:not([displaystop]) + #urlbar-stop-button,
+#urlbar-reload-button[displaystop]
+{
+  visibility: visible !important;
+}
+#urlbar-stop-button:not(:hover) {
+  background-image: none !important;
+}
