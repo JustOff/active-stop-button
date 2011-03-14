@@ -1,0 +1,1 @@
+pref("extensions.astob.alltabs","r_click");

@@ -2,6 +2,8 @@
 <?xml-stylesheet href="chrome://browser/content/browser.css" type="text/css"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 
+<!DOCTYPE overlay SYSTEM "chrome://astob/locale/astob.dtd">
+
 <overlay id="astob-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 <script>
@@ -19,9 +21,34 @@ function ASBstopAll() {
 }
 
 function ASBclick(e) {
-	if (e.button == 0) BrowserStop();
-	if (e.button == 2) ASBstopAll();
-	e.preventDefault();
+  var ASBstopAllTabs = prefManager.getCharPref("extensions.astob.alltabs");
+  if (e.detail == 1) {
+	switch (ASBstopAllTabs) {
+		case "c_click": if (e.button == 0) { 
+					if (e.ctrlKey) ASBstopAll(); 
+						else BrowserStop();
+					e.preventDefault();
+				}
+			break;
+		case "l_click": if (e.button == 0) {
+					ASBstopAll();
+					e.preventDefault()
+				}
+			break;
+		case "r_click": if (e.button == 0) BrowserStop();
+				if (e.button == 2) ASBstopAll();
+				e.preventDefault();
+			break;
+		case "d_click": if (e.button == 0) {
+					BrowserStop();
+					e.preventDefault();
+				}
+			break;
+		default: BrowserStop(); e.preventDefault();
+	};
+  } else if (e.detail == 2) {
+	if (ASBstopAllTabs == "d_click") ASBstopAll();
+  }
 }
 
 function ASBenableStop(e) {
@@ -103,7 +130,7 @@ window.addEventListener('load', function(e) {
 		var ntoolbox = document.getElementById('navigator-toolbox');
 		var zeroButton = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "toolbarbutton");
 		zeroButton.setAttribute( "id", "asb-zero" );
-		zeroButton.setAttribute( "label", "Zero Space" );
+		zeroButton.setAttribute( "label", "&zerospace;" );
 		zeroButton.setAttribute( "class", "KUI-panel-closebutton" );
 		zeroButton.setAttribute( "style", "list-style-image:none;opacity:1;background-color:white;width:16px;");
 		ntoolbox.palette.appendChild(zeroButton);
@@ -125,6 +152,7 @@ window.addEventListener('load', function(e) {
 		  }
 		}
 	}
+	prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 	window.setTimeout(ASBdelayedStartup, 0);
 }, false);
 </script>

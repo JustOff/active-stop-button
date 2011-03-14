@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://browser/content/browser.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://astob/locale/astob.dtd">
+
+<prefwindow id="astob-pref-window" title="&preftitle;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<prefpane>
+
+<preferences>
+  <preference id="stopalltabs" name="extensions.astob.alltabs" type="string"/>
+</preferences>
+
+<groupbox orient="horizontal">
+	<caption label="&stopalltabs;"/>
+	<spacer flex="1"/>
+	<vbox flex="4">
+	<radiogroup preference="stopalltabs">
+		<radio 	value="l_click" 
+			label="&leftclick;"/>
+		<radio 	value="d_click" 
+			label="&dblclick;"/>
+		<radio 	value="c_click" 
+			label="&cleftclick;"/>
+		<radio 	value="r_click" 
+			label="&rightclick;"/>
+	</radiogroup>
+	</vbox>
+</groupbox>
+
+</prefpane>
+</prefwindow>
