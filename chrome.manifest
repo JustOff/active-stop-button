@@ -2,3 +2,4 @@ content astob chrome/
 overlay	chrome://browser/content/browser.xul chrome://astob/content/astob.xul
 locale astob  en-US locale/en-US/
 locale astob  ru-RU locale/ru-RU/
+locale astob  el locale/el/

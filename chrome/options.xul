@@ -11,7 +11,7 @@
   <preference id="stopalltabs" name="extensions.astob.alltabs" type="string"/>
 </preferences>
 
-<groupbox orient="horizontal">
+<groupbox orient="horizontal" width="180">
 	<caption label="&stopalltabs;"/>
 	<spacer flex="1"/>
 	<vbox flex="4">
