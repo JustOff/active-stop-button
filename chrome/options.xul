@@ -9,6 +9,7 @@
 
 <preferences>
   <preference id="stopalltabs" name="extensions.astob.alltabs" type="string"/>
+  <preference id="stajax" name="extensions.astob.stajax" type="bool"/>
 </preferences>
 
 <groupbox orient="horizontal" width="180">
@@ -27,6 +28,7 @@
 	</radiogroup>
 	</vbox>
 </groupbox>
+<checkbox label="&stajax;" preference="stajax"/>
 
 </prefpane>
 </prefwindow>

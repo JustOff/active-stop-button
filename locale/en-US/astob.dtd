@@ -1,7 +1,7 @@
-<!ENTITY	zerospace	"Zero Space">
 <!ENTITY	preftitle	"Active Stop Button | Options">
 <!ENTITY	stopalltabs	"Stop all tabs with">
 <!ENTITY	leftclick	"Single click">
 <!ENTITY	rightclick	"Right click">
 <!ENTITY	cleftclick	"Ctrl + click">
 <!ENTITY	dblclick	"Double click">
+<!ENTITY	stajax		"Stop AJAX in all tabs">

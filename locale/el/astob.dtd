@@ -1,7 +1,7 @@
-<!ENTITY	zerospace	"Αόρατο μηδενικό διάστημα">
 <!ENTITY	preftitle	"Active Stop Button | Επιλογές">
 <!ENTITY	stopalltabs	"Διακοπή όλων των καρτελών με:">
 <!ENTITY	leftclick	"Μονό κλικ">
 <!ENTITY	rightclick	"Δεξί κλικ">
 <!ENTITY	cleftclick	"Ctrl + κλικ">
 <!ENTITY	dblclick	"Διπλό κλικ">
+<!ENTITY	stajax		"Stop AJAX in all tabs">
