@@ -176,8 +176,10 @@ if (typeof activestopbutton == "undefined") {
 		cstop.addEventListener('click', this.clickStopE, false);
 
 		var key = window.document.getElementById("key_stop");
-		key.removeAttribute("command");
-		key.setAttribute("oncommand", "activestopbutton.stopTab();");
+		if (key.getAttribute("command") == "Browser:Stop") {
+			key.removeAttribute("command");
+			key.setAttribute("oncommand", "activestopbutton.stopTab();");
+		}
 
 		if (!this.aust) {
 			var strbundle = document.getElementById("asbstrings");

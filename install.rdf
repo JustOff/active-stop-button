@@ -3,13 +3,13 @@
 
 <Description about="urn:mozilla:install-manifest">
 	<em:id>{9e96e0c4-9bde-49b7-989f-a4ca4bdc90bb}</em:id>
-	<em:version>1.5.0</em:version>
+	<em:version>1.5.1</em:version>
 	<em:type>2</em:type>
 	<em:iconURL>chrome://astob/content/astob.png</em:iconURL>
 	<em:optionsURL>chrome://astob/content/options.xul</em:optionsURL>
 	
 	<em:name>Active Stop Button</em:name>
-	<em:description>Always accessible stop command: from toolbar &amp; context menu.</em:description>
+	<em:description>Stop gif animation with button, context menu or Esc key</em:description>
 	<em:homepageURL>https://addons.mozilla.org/firefox/addon/active-stop-button/</em:homepageURL>
 	<em:creator>Off JustOff &lt;Off.Just.Off@gmail.com&gt;</em:creator>
 	<em:translator>Γιώργος Μαλαμάς (el)</em:translator>
@@ -29,7 +29,7 @@
 		<Description>
 			<em:locale>ru</em:locale>
 			<em:name>Active Stop Button</em:name>
-			<em:description>Доступная в любой момент команда "Остановить": через панель инструментов и контекстное меню.</em:description>
+			<em:description>Остановка gif-анимации c помощью кнопки "Стоп", из контектного меню или нажатием на Esc</em:description>
 			<em:homepageURL>https://addons.mozilla.org/ru/firefox/addon/active-stop-button/</em:homepageURL>
 			<em:creator>Off JustOff &lt;Off.Just.Off@gmail.com&gt;</em:creator>
 			<em:translator>Γιώργος Μαλαμάς (el)</em:translator>		
