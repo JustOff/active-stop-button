@@ -156,7 +156,7 @@ if (typeof activestopbutton == "undefined") {
 		var observerM = new MutationObserver(function (mutations) {
 			mutations.forEach(function (mutation) {
 				var name = mutation.attributeName, value = mutation.target.getAttribute(name);
-				if ((name == 'disabled' || name == 'hidden') && value == 'true') {
+				if (!gContextMenu.isTextSelected && (name == 'disabled' || name == 'hidden') && value == 'true') {
 					var reloadMenu = document.getElementById('context-reload');
 					reloadMenu.setAttribute('disabled', 'false');
 					reloadMenu.setAttribute('hidden', 'false');

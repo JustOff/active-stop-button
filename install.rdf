@@ -1,9 +1,9 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
 <Description about="urn:mozilla:install-manifest">
 	<em:id>{9e96e0c4-9bde-49b7-989f-a4ca4bdc90bb}</em:id>
-	<em:version>1.5.1</em:version>
+	<em:version>1.5.2b1</em:version>
 	<em:type>2</em:type>
 	<em:iconURL>chrome://astob/content/astob.png</em:iconURL>
 	<em:optionsURL>chrome://astob/content/options.xul</em:optionsURL>
