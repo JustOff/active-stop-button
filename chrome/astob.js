@@ -155,8 +155,8 @@ if (typeof activestopbutton == "undefined") {
 		var reloadMenu = document.getElementById('context-reload');
 		var observerM = new MutationObserver(function (mutations) {
 			mutations.forEach(function (mutation) {
-				if (gContextMenu.onTextInput || gContextMenu.onImage || gContextMenu.onLink 
-					|| gContextMenu.onMailtoLink || gContextMenu.isTextSelected) {
+				if (gContextMenu && (gContextMenu.onTextInput || gContextMenu.onImage || gContextMenu.onLink 
+					|| gContextMenu.onMailtoLink || gContextMenu.isTextSelected)) {
 					return;
 				}
 				var name = mutation.attributeName, value = mutation.target.getAttribute(name);
