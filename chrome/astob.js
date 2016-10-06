@@ -195,25 +195,27 @@ if (typeof activestopbutton == "undefined") {
 			zeroButton.setAttribute( "class", "KUI-panel-closebutton" );
 			zeroButton.setAttribute( "style", "list-style-image:none;opacity:1;background-color:white;width:16px;");
 			ntoolbox.palette.appendChild(zeroButton);
-			var RDF = Components.classes["@mozilla.org/rdf/rdf-service;1"]
-				.getService(Components.interfaces.nsIRDFService);
-			var lstore = Components. classes["@mozilla.org/rdf/datasource;1?name=local-store"]
-				.getService(Components.interfaces.nsIRDFDataSource);
-			if (lstore.GetTarget(RDF.GetResource("chrome://browser/content/browser.xul#nav-bar"), RDF.GetResource("currentset"), true)) {
-				var navcset = lstore.GetTarget(RDF.GetResource("chrome://browser/content/browser.xul#nav-bar"),
-					RDF.GetResource("currentset"), true).QueryInterface(Components.interfaces.nsIRDFLiteral).Value;
-				var curset = navcset.split(",");
-				if (curset.indexOf("asb-zero") != -1) {
-					var ai = curset[curset.indexOf("asb-zero")+1];
-					CombinedStopReload.uninit();
-					var navToolbar = document.getElementById("nav-bar");
-					var rb = document.getElementById(ai);
-					navToolbar.insertItem("asb-zero", rb, null, false); 
-					CombinedStopReload.init();
-				}
-			}
+
+			[].some.call(window.document.querySelectorAll("toolbar[currentset]"),
+				function(tb) {
+					var cs = tb.getAttribute("currentset").split(","),
+						bp = cs.indexOf("asb-zero") + 1;
+					
+					if (bp) {
+						var at = null, f = [],
+						xul={spacer:1,spring:1,separator:1};
+						cs.splice(bp).some(function(id)
+							(at=window.document.getElementById(id))?!0:(f.push(id),!1));
+						at&&f.length&&f.forEach(function(n)xul[n]
+							&&(at=at&&at.previousElementSibling));
+						CombinedStopReload.uninit();
+						tb.insertItem("asb-zero", at, null, false);
+						CombinedStopReload.init();
+						return true;
+					}
+				});
 		}
-		
+
 		this.manageCSS("r");
 	}
   };
