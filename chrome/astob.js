@@ -3,6 +3,7 @@ if (typeof activestopbutton == "undefined") {
   var activestopbutton = {
 
 	aust: false,
+	smnk: false,
 	sblist: [],
 	prefs: null,
 	alltabs: "",
@@ -56,6 +57,7 @@ if (typeof activestopbutton == "undefined") {
 	},
 
 	manageCSS: function(mode) {
+		if (this.smnk) return;
 		var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
                     .getService(Components.interfaces.nsIStyleSheetService);
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
@@ -80,7 +82,11 @@ if (typeof activestopbutton == "undefined") {
 	},
 	
 	clickListen: function() {
-		var stbs = document.getElementsByAttribute("command", "Browser:Stop");
+		if (this.smnk) {
+			var stbs = document.getElementsByAttribute("oncommand", "BrowserStop();");
+		} else {
+			var stbs = document.getElementsByAttribute("command", "Browser:Stop");
+		}
 		for (let stb of stbs) {
 			if (stb.localName == "toolbarbutton") {
 				this.sblist.push(stb);
@@ -121,6 +127,7 @@ if (typeof activestopbutton == "undefined") {
 		let that = this;
 		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 			.getService(Components.interfaces.nsIXULAppInfo);
+		this.smnk = (appInfo.ID == "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}");
 		var verCheck = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
 			.getService(Components.interfaces.nsIVersionComparator);
 		this.aust = (verCheck.compare(appInfo.version, "29.0a1") >= 0);
@@ -131,7 +138,11 @@ if (typeof activestopbutton == "undefined") {
 		this.alltabs = this.prefs.getCharPref('alltabs');
 		var stj = this.prefs.getBoolPref('stajax'); if (stj) this.stajax = 3; else this.stajax = 2;
 
-		var stopCommand = XULBrowserWindow.stopCommand;
+		if (this.smnk) {
+			var stopCommand = document.getElementById("stop-button");
+		} else {
+			var stopCommand = XULBrowserWindow.stopCommand;
+		}
 		var observerC = new MutationObserver(function (mutations) {
 			mutations.forEach(function (mutation) {
 				var name = mutation.attributeName, value = mutation.target.getAttribute(name);
@@ -139,7 +150,7 @@ if (typeof activestopbutton == "undefined") {
 					switch (value) {
 						case 'false': break;
 						case 'true': that.sflag = 2; 
-									XULBrowserWindow.stopCommand.setAttribute('disabled', 'false');
+									stopCommand.setAttribute('disabled', 'false');
 									for (let stb of that.sblist) {
 										stb.removeAttribute("disabled");
 									}
@@ -150,9 +161,13 @@ if (typeof activestopbutton == "undefined") {
 			});
 		});
 		observerC.observe(stopCommand, {attributes: true});
-		XULBrowserWindow.stopCommand.setAttribute('disabled', 'false');
+		stopCommand.removeAttribute('disabled');
 	
-		var reloadMenu = document.getElementById('context-reload');
+		if (this.smnk) {
+			var contextMenu = document.getElementById('context-stop');
+		} else {
+			var contextMenu = document.getElementById('context-reload');
+		}
 		var observerM = new MutationObserver(function (mutations) {
 			mutations.forEach(function (mutation) {
 				if (gContextMenu && (gContextMenu.onTextInput || gContextMenu.onImage || gContextMenu.onLink 
@@ -161,15 +176,14 @@ if (typeof activestopbutton == "undefined") {
 				}
 				var name = mutation.attributeName, value = mutation.target.getAttribute(name);
 				if ((name == 'disabled' || name == 'hidden') && value == 'true') {
-					var reloadMenu = document.getElementById('context-reload');
-					reloadMenu.setAttribute('disabled', 'false');
-					reloadMenu.setAttribute('hidden', 'false');
+					contextMenu.removeAttribute('disabled');
+					contextMenu.removeAttribute('hidden');
 				}
 			});
 		});
-		observerM.observe(reloadMenu, {attributes: true});
-		reloadMenu.setAttribute('disabled', 'false');
-		reloadMenu.setAttribute('hidden', 'false');
+		observerM.observe(contextMenu, {attributes: true});
+		contextMenu.removeAttribute('disabled');
+		contextMenu.removeAttribute('hidden');
 
 		this.clickListen();
 
@@ -185,7 +199,7 @@ if (typeof activestopbutton == "undefined") {
 			key.setAttribute("oncommand", "activestopbutton.stopTab();");
 		}
 
-		if (!this.aust) {
+		if (!this.aust && !this.smnk) {
 			var strbundle = document.getElementById("asbstrings");
 			var zeroLabel = strbundle.getString("zerospace");
 			var ntoolbox = document.getElementById('navigator-toolbox');

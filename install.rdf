@@ -3,7 +3,7 @@
 
 <Description about="urn:mozilla:install-manifest">
 	<em:id>{9e96e0c4-9bde-49b7-989f-a4ca4bdc90bb}</em:id>
-	<em:version>1.5.4</em:version>
+	<em:version>1.5.5</em:version>
 	<em:type>2</em:type>
 	<em:iconURL>chrome://astob/content/astob.png</em:iconURL>
 	<em:optionsURL>chrome://astob/content/options.xul</em:optionsURL>
@@ -42,6 +42,14 @@
 			<em:minVersion>14.0</em:minVersion>
 			<em:maxVersion>*</em:maxVersion>
 		</Description>
+	</em:targetApplication>
+	
+	<em:targetApplication>
+	  <Description>
+		<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+		<em:minVersion>2.24</em:minVersion>
+		<em:maxVersion>*</em:maxVersion>
+	  </Description>
 	</em:targetApplication>
 	
 	<em:targetApplication>
