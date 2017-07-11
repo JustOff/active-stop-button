@@ -56,6 +56,12 @@ if (typeof activestopbutton == "undefined") {
 		}
 	},
 
+	auxclickStopE: function(e) {
+		if (activestopbutton.alltabs == "r_click" && e.button == 2) {
+			e.preventDefault();
+		}
+	},
+
 	manageCSS: function(mode) {
 		if (this.smnk) return;
 		var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
@@ -91,6 +97,7 @@ if (typeof activestopbutton == "undefined") {
 			if (stb.localName == "toolbarbutton") {
 				this.sblist.push(stb);
 				stb.addEventListener('click', this.clickStopE, false);
+				stb.addEventListener('auxclick', this.auxclickStopE, false);
 				stb.removeAttribute("disabled");
 			}
 		}
@@ -99,6 +106,7 @@ if (typeof activestopbutton == "undefined") {
 	beforeCustomize: function() {
 		for (let stb of this.sblist) {
 			stb.removeEventListener('click', this.clickStopE);
+			stb.removeEventListener('auxclick', this.auxclickStopE);
 		}
 		this.sblist.length = 0;
 		if (!this.aust) {
