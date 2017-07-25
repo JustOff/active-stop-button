@@ -1,5 +1,7 @@
 #urlbar-reload-button:not([displaystop]) + #urlbar-stop-button,
-#urlbar-reload-button[displaystop]
+#urlbar-reload-button[displaystop],
+#reload-button:not([displaystop]) + #stop-button,
+#reload-button[displaystop]
 {
   visibility: visible !important;
 }
