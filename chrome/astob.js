@@ -135,7 +135,7 @@ if (typeof activestopbutton == "undefined") {
 		let that = this;
 		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 			.getService(Components.interfaces.nsIXULAppInfo);
-		this.smnk = (appInfo.ID == "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}");
+		this.smnk = (appInfo.ID == "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}") || (appInfo.ID == "{a3210b97-8e8a-4737-9aa0-aa0e607640b9}");
 		var verCheck = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
 			.getService(Components.interfaces.nsIVersionComparator);
 		this.aust = (verCheck.compare(appInfo.version, "29.0a1") >= 0);
