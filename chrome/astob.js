@@ -138,7 +138,7 @@ if (typeof activestopbutton == "undefined") {
 		this.smnk = (appInfo.ID == "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}") || (appInfo.ID == "{a3210b97-8e8a-4737-9aa0-aa0e607640b9}");
 		var verCheck = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
 			.getService(Components.interfaces.nsIVersionComparator);
-		this.aust = (verCheck.compare(appInfo.version, "29.0a1") >= 0);
+		this.aust = ((appInfo.ID == "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}") && verCheck.compare(appInfo.version, "29.0a1") >= 0);
 		
 		this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService).getBranch("extensions.astob.");
