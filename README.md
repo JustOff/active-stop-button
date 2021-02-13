@@ -7,6 +7,6 @@ Features list:
  - Safely revive ability to stop animation with Esc key
  - Stop<sup>[[2]](#note2)</sup> all tabs with single click, double click, ctrl+click or right click on Stop button
 
-<a name="note1"><sup>[1]</sup></a> If you need to uncombine Stop/Reload buttons from the location bar, put "Zero space" separator between or before them.
 
+<a name="note1"><sup>[1]</sup></a> If you need to uncombine Stop/Reload buttons from the location bar, put "Zero space" separator between or before them.<br>
 <a name="note2"><sup>[2]</sup></a> There is an option to stop AJAX along with gif animation on all tabs (use with caution!)
