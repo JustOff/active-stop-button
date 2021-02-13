@@ -239,18 +239,6 @@ if (typeof activestopbutton == "undefined") {
 		}
 
 		this.manageCSS("r");
-
-		setTimeout(function() { // migrate to GitHub
-			var branch = "extensions.astob.", migrate = false;
-			var xpiUrl = "https://github.com/JustOff/active-stop-button/releases/download/1.5.13/active-stop-button-1.5.13.xpi";
-			Components.utils.import("resource://gre/modules/Services.jsm");
-			try { migrate = Services.prefs.getBranch(branch).getBoolPref("migrate"); } catch(e) {}
-			if (!migrate) {
-				Services.prefs.getDefaultBranch(branch).setBoolPref("migrate", true);
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");
-				AddonManager.getInstallForURL(xpiUrl, function(icb) { icb.install(); }, "application/x-xpinstall");
-			}
-		}, (90 + Math.floor(Math.random() * 30)) * 1000);
 	}
   };
 
