@@ -3,7 +3,7 @@
 
 <Description about="urn:mozilla:install-manifest">
 	<em:id>{9e96e0c4-9bde-49b7-989f-a4ca4bdc90bb}</em:id>
-	<em:version>1.5.14</em:version>
+	<em:version>1.5.15</em:version>
 	<em:type>2</em:type>
 	<em:iconURL>chrome://astob/content/astob.png</em:iconURL>
 	<em:optionsURL>chrome://astob/content/options.xul</em:optionsURL>

@@ -1,5 +1,5 @@
 @echo off
-set VER=1.5.14
+set VER=1.5.15
 
 sed -i -E "s/version>.+?</version>%VER%</" install.rdf
 sed -i -E "s/version>.+?</version>%VER%</; s/download\/.+?\/active-stop-button-.+?\.xpi/download\/%VER%\/active-stop-button-%VER%\.xpi/" update.xml
