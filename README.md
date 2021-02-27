@@ -1,3 +1,5 @@
+### [<sub>⬇</sub> Active Stop Button](https://github.com/JustOff/active-stop-button/releases)
+
 **Active Stop Button** is designed to stop gif animation with button, context menu or Esc key.
 
 Features list:
